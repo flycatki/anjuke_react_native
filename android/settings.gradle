@@ -1,0 +1,3 @@
+rootProject.name = 'anjuke_react_native'
+
+include ':app'
