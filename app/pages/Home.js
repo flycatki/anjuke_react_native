@@ -7,7 +7,10 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
 } from 'react-native';
+
+import Header from '../components/header/header';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -30,10 +33,23 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <View>
-        <Text>HomePage</Text>
+      <View style={{flex: 1}}>
+        <ScrollView style={styles.scrollView}>
+          <View style={styles.container}>
+            <Header/>
+          </View>
+        </ScrollView>
       </View>
     )
   }
+};
 
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5fcff',
+  },
+  scrollView: {
+    marginBottom: 1,
+  }
+});
