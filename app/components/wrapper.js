@@ -7,15 +7,31 @@ import {
   TabNavigator,
 } from 'react-navigation';
 
-import HomePage from '../pages/Home';
+import HomeTab from '../pages/Home';
 import ChatPage from '../pages/Chat';
 import RecommendPage from '../pages/Recommend';
 import MyPage from '../pages/My';
 
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const Wrapper = TabNavigator({
   Home: {
-    screen: HomePage,
+    screen: HomeTab,
     path: '',
+    navigationOptions: {
+      tabBar: {
+        icon: ({ tintColor, focused }) => (
+          <Ionicons
+            name={focused ? 'ios-home' : 'ios-home-outline'}
+            size={26}
+            style={{ color: tintColor }}
+          />
+        )
+      },
+      header: {
+        visible: false,
+      },
+    },
   },
   Chat: {
     screen: ChatPage,

@@ -7,7 +7,7 @@ import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
+  TouchableNativeFeedback,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -25,10 +25,12 @@ export default class Header extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.headerWrapper}>
-          <View style={styles.locationContainer}>
-            <Text style={styles.locationText}>大连</Text>
-            <Icon name="md-arrow-dropdown" size={20} color="#fff" style={{marginLeft: 3}} />
-          </View>
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('City')}>
+            <View style={styles.locationContainer}>
+              <Text style={styles.locationText}>大连</Text>
+              <Icon name="md-arrow-dropdown" size={20} color="#fff" style={{marginLeft: 3}} />
+            </View>
+          </TouchableNativeFeedback>
           <View style={styles.searchContainer}>
             <Icon name="ios-search-outline" size={20} color="#666" />
             <Text style={styles.searchText}>挑好房，上安居客</Text>

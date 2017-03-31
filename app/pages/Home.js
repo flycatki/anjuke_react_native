@@ -11,38 +11,45 @@ import {
 } from 'react-native';
 
 import Header from '../components/header/header';
+import CityPage from '../pages/City';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StackNavigator, } from 'react-navigation';
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
   }
-
-  static navigationOptions = {
-    tabBar: {
-      icon: ({ tintColor, focused }) => (
-        <Ionicons
-          name={focused ? 'ios-home' : 'ios-home-outline'}
-          size={26}
-          style={{ color: tintColor }}
-        />
-      )
-    }
-  };
 
   render() {
     return (
       <View style={{flex: 1}}>
         <ScrollView style={styles.scrollView}>
           <View style={styles.container}>
-            <Header/>
+            <Header navigation={this.props.navigation}/>
           </View>
         </ScrollView>
       </View>
     )
   }
 };
+
+const HomeTab = StackNavigator({
+  Home: {
+    screen: HomePage,
+    path: '/',
+    navigationOptions: {
+      header: {
+        visible: false,
+      }
+    }
+  },
+  City: {
+    path: 'city',
+    screen: CityPage,
+  }
+});
+
+export default HomeTab;
 
 const styles = StyleSheet.create({
   container: {
